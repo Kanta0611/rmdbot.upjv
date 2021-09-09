@@ -8,7 +8,7 @@
 ### Le bot Discord
 
 Rmdbot est capable de :
-- Vous envoyer des rappels minutes avant vos cours
+- Vous envoyer des rappels 15 minutes avant vos cours
 - Vous envoyer des alertes en cas de changement de dernière minute
 - Vous donner accès à une liste de commandes
 
