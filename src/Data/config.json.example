@@ -1,0 +1,10 @@
+{
+    "token": "YOUR-TOKEN",
+    "prefix": "r!",
+    "colors": {
+        "default": 333631,
+        "red": 15548997,
+        "green": 5763719,
+        "blue": 5793266
+    }
+}

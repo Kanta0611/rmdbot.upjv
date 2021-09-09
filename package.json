@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.1.0",
+    "nodemon": "^2.0.12"
+  },
+  "name": "rmdbot.upjv",
+  "version": "0.1.0",
+  "description": "Bot destiné aux rappels d'emploi du temps sur Discord, exclusif à la promo 2021 de l'IUT d'Amiens",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nero_",
+  "license": "ISC",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nero611/rmdbot.upjv.git"
+  },
+  "keywords": [
+    "bot",
+    "discord"
+  ],
+  "bugs": {
+    "url": "https://github.com/Nero611/rmdbot.upjv/issues"
+  },
+  "homepage": "https://github.com/Nero611/rmdbot.upjv#readme"
+}
