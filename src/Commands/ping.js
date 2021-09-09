@@ -5,8 +5,8 @@ module.exports = new Command({
     description: "Montre la latence du bot et de l'API.",
 
     async run(message, args, client) {
-        const msg = await message.reply(`🏓`);
+        const msg = await message.reply(`ping`);
 
-        msg.edit(`Ping du bot: \`${client.ws.ping} ms\`\nPing de l'API: \`${msg.createdTimestamp - message.createdTimestamp} ms\``);
+        msg.edit(`Ping de l'API: \`${client.ws.ping} ms\`\nPing du bot: \`${msg.createdTimestamp - message.createdTimestamp} ms\``);
     }
 })
