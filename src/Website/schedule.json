@@ -1,0 +1,33 @@
+{
+  "monday": [
+        {
+          "name":"Cours sur les moules du pacifique",
+          "hour": {
+            "start":"2021-09-09T08:00:06.897Z", 
+            "end":"2021-09-09T12:01:53.530Z"
+          },
+          "teacher": "Franky Vincent"
+        },
+        {
+          "name":"Architecture amérindienne",
+          "hour": {
+            "start":"2021-09-09T10:30:06.897Z", 
+            "end":"2021-09-09T12:00:53.530Z"
+          },
+          "teacher": "Mario"
+        },
+        {
+          "name":"Histoire du jacobinisme",
+          "hour": {
+            "start":"2021-09-09T15:00:06.897Z", 
+            "end":"2021-09-09T16:00:53.530Z"
+          },
+          "teacher": "Robospierre"
+        }
+  ],
+  "tuesday": [],
+  "wednesday": [],
+  "thursday": [],
+  "friday": [],
+  "saturday": []
+}
