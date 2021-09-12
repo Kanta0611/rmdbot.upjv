@@ -1,34 +1,70 @@
 // fonction de traitement de fichier
 let handleFile = (json) => {
-    if (!json || typeof(json) != "object") throw new Error("No JSON data provided"); // dans le cas hypotétique où il y aurai pas d'objet en réponse
+    if (!json || typeof (json) != "object") throw new Error("No JSON data provided"); // dans le cas hypotétique où il y aurai pas d'objet en réponse
 
-    for (let i  = 0; i < json.monday.length; i++)
-    {
+    // gestion du lundi
+    for (let i = 0; i < json.monday.length; i++) {
+        // heures et minutes du début du cours
         let startCourse = {
             hour: new Date(json.monday[i].hour.start).getHours() - 2,
             minute: new Date(json.monday[i].hour.start).getMinutes()
         }
 
+        // heure et minute du début du cours
         let stopCourse = {
             hour: new Date(json.monday[i].hour.end).getHours() - 2,
             minute: new Date(json.monday[i].hour.end).getMinutes()
         }
 
-        let courseLength = stopCourse.hour - startCourse.hour
+        // obtient le temps (en ms) d'un cours, diviser par 1800000 pour avoir le temps en demi-heures
+        let courseLength = new Date(json.monday[i].hour.end) - new Date(json.monday[i].hour.start)
+        console.log("temps :" + courseLength / 1800000);
 
-        let idstart;
-        
-        console.log(startCourse.minute)
+        let idstart; // ID du cours
+
+        // console.log(startCourse.minute)
+
+        // si le cours est sur une heure "ronde" on met juste l'heure, si c'est sur une demi-heure on ajoute "30" derrière
         if (startCourse.minute == 0)
             idstart = `${startCourse.hour}`
         else
             idstart = `${startCourse.hour}${startCourse.minute}`;
-        
-        console.log("mon-" + idstart)
-        updateHTML("#mon-" + idstart, json.monday[i].name)
-        console.log("durée " + courseLength);
-    }
+
+        console.log(courseLength); // of affiche la durée du cours en demi-heures (débug, à retirer après)
+
+        // on remplit le tableau
+        /* for (let j = 0; j < courseLength / 1800000; j++) {
+            console.log(json.monday[i].name)
+
+            // on regarde si on fait sur une demi-heure ou non
+            if (idstart.includes('30', 2)) {
+                taghour = Number(idstart);
+            } else {
+                taghour = Number(idstart) + j;
+            }
+
+            if (j % 2 == 0)
+            {
+                updateHTML(`#mon-${taghour}`, `${json.monday[i].name} - ${json.monday[i].room} - ${json.monday[i].teacher}`) // on met à jour l'HTML
+            }
+            else
+            {
+                updateHTML(`#mon-${taghour}30`, `${json.monday[i].name} - ${json.monday[i].room} - ${json.monday[i].teacher}`)
+            }
     
+        } */
+        let tag;
+        for (let j = 0; j < json.monday[1].length; j++)
+        {
+            if (idstart.includes('30', 2)) {
+                tag = Number(idstart);
+            } else {
+                tag = Number(idstart) + j;
+            }
+            console.log(tag)
+        }
+
+    }
 
 }
 
