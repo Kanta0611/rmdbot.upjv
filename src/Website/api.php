@@ -3,11 +3,11 @@
 
 /**
  * @param string $courseDay Jour du cours (lundi, mardi, mercredi, jeudi, vendredi, samedi)
- * @param mixed $courseName Nom du cours
- * @param mixed $courseRoom Salle du cours
- * @param mixed $courseStart Heure (format ISO) du cours
- * @param mixed $courseLength Durée du cours (en n-demi-heures)
- * @param mixed $courseTeacher Prof du cours
+ * @param string $courseName Nom du cours
+ * @param string $courseRoom Salle du cours
+ * @param string $courseStart Heure (format ISO) du cours
+ * @param int $courseLength Durée du cours (en n-demi-heures)
+ * @param string $courseTeacher Prof du cours
  * 
  * @return void
  */
@@ -35,7 +35,7 @@ function addObject($courseDay, $courseName, $courseRoom, $courseStart, $courseLe
 
 
 /**
- * @param mixed $guid ID du cours
+ * @param string $guid ID du cours
  * 
  * @return void
  */
@@ -85,12 +85,12 @@ function removeObject($guid) {
 
 
 /**
- * @param mixed $guid ID du cours
- * @param mixed $courseName
- * @param mixed $courseRoom
- * @param mixed $courseStart
- * @param mixed $courseLength
- * @param mixed $courseTeacher
+ * @param string $guid ID du cours
+ * @param string $courseName Nom du cours
+ * @param string $courseRoom Salle du cours
+ * @param string $courseStart Heure (format ISO) du cours
+ * @param string $courseLength Durée du cours (en n-demi-heure)
+ * @param string $courseTeacher Prof du cours
  * 
  * @return void
  */
@@ -164,7 +164,11 @@ echo(json_encode($data));
 }
 
 	// differents apis
-	// getVersion
+	// getVersion donne la version de l'API actuelle
+    // addCourse ajoute un cours
+    // removeCourse supprime un cours
+    // clearWeek supprime tout les cours
+    // editCourse édite un cours
 switch ($_GET["api"]) {
 	case "getVersion":
 		echo "1.0";
