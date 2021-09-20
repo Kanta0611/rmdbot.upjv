@@ -33,8 +33,11 @@ function addObject($courseDay, $courseName, $courseRoom, $courseStart, $courseLe
     file_put_contents("schedule.json", json_encode($data));
 }
 
+
 /**
- * Fonction supprimant un cours au fichiers JSON en founissant son ID
+ * @param mixed $guid ID du cours
+ * 
+ * @return void
  */
 function removeObject($guid) {
     
@@ -81,6 +84,16 @@ function removeObject($guid) {
 }
 
 
+/**
+ * @param mixed $guid ID du cours
+ * @param mixed $courseName
+ * @param mixed $courseRoom
+ * @param mixed $courseStart
+ * @param mixed $courseLength
+ * @param mixed $courseTeacher
+ * 
+ * @return void
+ */
 function editObject($guid, $courseName, $courseRoom, $courseStart, $courseLength, $courseTeacher) {
     
     $filecontent = file_get_contents("schedule.json"); // charge le contenu du fichier
