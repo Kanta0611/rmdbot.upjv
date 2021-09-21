@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * @param string $courseDay Jour du cours (lundi, mardi, mercredi, jeudi, vendredi, samedi)
  * @param string $courseName Nom du cours
@@ -32,7 +30,6 @@ function addObject($courseDay, $courseName, $courseRoom, $courseStart, $courseLe
 
     file_put_contents("schedule.json", json_encode($data));
 }
-
 
 /**
  * @param string $guid ID du cours
@@ -82,7 +79,6 @@ function removeObject($guid) {
 
     file_put_contents("schedule.json", json_encode($data));
 }
-
 
 /**
  * @param string $guid ID du cours
@@ -148,10 +144,44 @@ function editObject($guid, $courseName, $courseRoom, $courseStart, $courseLength
 
     file_put_contents("schedule.json", json_encode($data));
 }
-
 ?>
 
 <?php
+
+function isUser() {
+    if (isset($_POST['discordid']) && $_POST['discordid'] != "") {
+        include "vars.php";
+
+        $db = new PDO("mysql:host={$db_uri};dbname={$db_name}", $db_user, $db_password); // initialisation de la bdd dans le fichier PHP
+
+        // on obtient tout les ID discord
+        $getEveryDiscordIDRequest = "SELECT discord_id FROM admins WHERE 1";
+
+        $getEveryDiscordIDPrepare = $db->prepare($getEveryDiscordIDRequest);
+        $getEveryDiscordIDPrepare->execute();
+
+        // on crée un tableau avec tout les ID
+        $rows = array();
+        $index = 0;
+
+        // on remplit le tableau
+        while ($row = $getEveryDiscordIDPrepare->fetch()) {
+            $rows[$index] = $row;
+            $index++;
+        }
+
+        $saltedDiscordID = $_POST['discordid'];
+        $connected = false;
+
+        for ($i = 0; $i < count($rows); $i++) {
+            if (hash("sha256", $rows[$i][0]) == $saltedDiscordID) {
+                $connected = true;
+            }
+        }
+
+        return $connected;
+    }
+}
 
 if (!isset($_GET["api"])) {$data = [
     "message" => "No API Endpoint provided or endpoint is not valid"
@@ -175,6 +205,16 @@ switch ($_GET["api"]) {
 		break;
     
     case "addCourse":
+        // vérification de l'utilisateur, si l'id n'existe pas on annule l'opération
+        if (!isUser()) {
+            $state =  [
+                "state" => "Not connected"
+            ];
+            // header("Content-type: application/json");
+            echo(json_encode($state));
+            die();
+        }
+
         if (isset($_GET['day']) && $_GET['day'] != "" && isset($_GET['name']) && $_GET['name'] != ""  && isset($_GET['room']) && $_GET['room'] != "" && isset($_GET['start']) && $_GET['start'] != "" && isset($_GET['length']) && $_GET['length'] != 0 && isset($_GET['teacher']) && $_GET['teacher'] != "") {
             addObject($_GET['day'], $_GET['name'], $_GET['room'], $_GET['start'], $_GET['length'], $_GET['teacher']);
             $state =  [
@@ -192,6 +232,15 @@ switch ($_GET["api"]) {
         break;
 
     case "removeCourse":
+        if (!isUser()) {
+            $state =  [
+                "state" => "Not connected"
+            ];
+            // header("Content-type: application/json");
+            echo(json_encode($state));
+            die();
+        }
+
         if (isset($_GET['guid']) && $_GET['guid'] != "") {
             removeObject($_GET['guid']);
 
@@ -239,6 +288,21 @@ switch ($_GET["api"]) {
             header("Content-type: application/json");
             echo(json_encode($state));      
         }
+        break;
+
+    case "checkRoutine":
+        $data = [];
+        if (isUser()) {
+            $data = [
+                "status" => "Connected"
+            ];
+        } else {
+            $data = [
+                "status" => "Not connected"
+            ];
+        }
+        header("Content-type: application/json");
+        echo json_encode($data);
         break;
     
     default:

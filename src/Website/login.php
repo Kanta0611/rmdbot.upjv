@@ -35,11 +35,11 @@ if (isset($_SESSION['discordid']) && $_SESSION['discordid'] != "")
     </form>
 
     <?php
-        include "vars.php";
+        include "vars.php"; // inclusion des variables de bdd
         if ((isset($_POST['username']) && $_POST['username'] != '') && (isset($_POST['password']) && $_POST['password'] != '')) {
             $db = new PDO("mysql:host={$db_uri};dbname={$db_name}", $db_user, $db_password); // initialisation de la bdd dans le fichier PHP
 
-            $hashedPassword = hash("sha512", $_POST['password']);
+            $hashedPassword = hash("sha512", $_POST['password']); // hash du mot de passe en SHA512
 
             $sqlCmd = "SELECT * FROM admins WHERE username='{$_POST['username']}' AND password='{$hashedPassword}'"; // commande sélectionnant l'enregistrement avec les identifiants entrés
             
@@ -48,7 +48,8 @@ if (isset($_SESSION['discordid']) && $_SESSION['discordid'] != "")
 
             $row = $prepare->fetch();
             if ($prepare->rowCount() > 0) {
-                $_SESSION['discordid'] = $row['discord_id'];
+                $_SESSION['discordid'] = hash('sha256', $row['discord_id']);
+                $_SESSION['unsalted_discordid'] = $row['discord_id'];
 
                 header('Location: editor.php');
                 die();

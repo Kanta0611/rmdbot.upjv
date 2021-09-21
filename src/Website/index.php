@@ -26,6 +26,7 @@
         </style>
         <table>
             <tr>
+                <!-- colonnes -->
                 <td>X</td>
                 <td>Lundi</td>
                 <td>Mardi</td>
@@ -35,6 +36,7 @@
                 <td>Samedi</td>
             </tr>
             <tr>
+                <!-- ligne 8h -->
                 <td>8h</td>
                 <td id="mon-8" class="mon-1">xxxx</td>
                 <td id="tue-8" class="tue-1">xxxx</td>
@@ -44,6 +46,7 @@
                 <td id="sat-8" class="sat-1">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 8h30 -->
                 <td>8h30</td>
                 <td id="mon-830" class="mon-2">xxxx</td>
                 <td id="tue-830" class="tue-2">xxxx</td>
@@ -53,6 +56,7 @@
                 <td id="sat-830" class="sat-2">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 9h -->
                 <td>9h</td>
                 <td id="mon-9" class="mon-3">xxxx</td>
                 <td id="tue-9" class="tue-3">xxxx</td>
@@ -62,6 +66,7 @@
                 <td id="sat-9" class="sat-3">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 9h30 -->
                 <td>9h30</td>
                 <td id="mon-930" class="mon-4">xxxx</td>
                 <td id="tue-930" class="tue-4">xxxx</td>
@@ -71,6 +76,7 @@
                 <td id="sat-930" class="sat-4">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 10h -->
                 <td>10h</td>
                 <td id="mon-10" class="mon-5">xxxx</td>
                 <td id="tue-10" class="tue-5">xxxx</td>
@@ -80,6 +86,7 @@
                 <td id="sat-10" class="sat-5">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 10h30 -->
                 <td>10h30</td>
                 <td id="mon-1030" class="mon-6">xxxx</td>
                 <td id="tue-1030" class="tue-6">xxxx</td>
@@ -89,6 +96,7 @@
                 <td id="sat-1030" class="sat-6">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 11h -->
                 <td>11h</td>
                 <td id="mon-11" class="mon-7">xxxx</td>
                 <td id="tue-11" class="tue-7">xxxx</td>
@@ -98,6 +106,7 @@
                 <td id="sat-11" class="sat-7">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 11h30 -->
                 <td>11h30</td>
                 <td id="mon-1130" class="mon-8">xxxx</td>
                 <td id="tue-1130" class="tue-8">xxxx</td>
@@ -107,6 +116,7 @@
                 <td id="sat-1130" class="sat-8">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 12h -->
                 <td>12h</td>
                 <td id="mon-12" class="mon-9">xxxx</td>
                 <td id="tue-12" class="tue-9">xxxx</td>
@@ -116,6 +126,7 @@
                 <td id="sat-12" class="sat-9">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 12h30 -->
                 <td>12h30</td>
                 <td id="mon-1230" class="mon-10">xxxx</td>
                 <td id="tue-1230" class="tue-10">xxxx</td>
@@ -125,6 +136,7 @@
                 <td id="sat-1230" class="sat-10">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 13h -->
                 <td>13h</td>
                 <td id="mon-13" class="mon-11">xxxx</td>
                 <td id="tue-13" class="tue-11">xxxx</td>
@@ -134,6 +146,7 @@
                 <td id="sat-13" class="sat-11">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 13h30 -->
                 <td>13h30</td>
                 <td id="mon-1330" class="mon-12">xxxx</td>
                 <td id="tue-1330" class="tue-12">xxxx</td>
@@ -143,6 +156,7 @@
                 <td id="sat-1330" class="sat-12">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 14h -->
                 <td>14h</td>
                 <td id="mon-14" class="mon-13">xxxx</td>
                 <td id="tue-14" class="tue-13">xxxx</td>
@@ -152,6 +166,7 @@
                 <td id="sat-14" class="sat-13">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 14h30 -->
                 <td>14h30</td>
                 <td id="mon-1430" class="mon-14">xxxx</td>
                 <td id="tue-1430" class="tue-14">xxxx</td>
@@ -161,6 +176,7 @@
                 <td id="sat-1430" class="sat-14">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 15h -->
                 <td>15h</td>
                 <td id="mon-15" class="mon-15">xxxx</td>
                 <td id="tue-15" class="tue-15">xxxx</td>
@@ -170,6 +186,7 @@
                 <td id="sat-15" class="sat-15">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 15h30 -->
                 <td>15h30</td>
                 <td id="mon-1530" class="mon-16">xxxx</td>
                 <td id="tue-1530" class="tue-16">xxxx</td>
@@ -178,8 +195,8 @@
                 <td id="fri-1530" class="fri-16">xxxx</td>
                 <td id="sat-1530" class="sat-16">xxxx</td>
             </tr>
-            
             <tr>
+                <!-- ligne 16h -->
                 <td>16h</td>
                 <td id="mon-16" class="mon-17">xxxx</td>
                 <td id="tue-16" class="tue-17">xxxx</td>
@@ -189,6 +206,7 @@
                 <td id="sat-16" class="sat-17">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 16h30 -->
                 <td>16h30</td>
                 <td id="mon-1630" class="mon-18">xxxx</td>
                 <td id="tue-1630" class="tue-18">xxxx</td>
@@ -198,6 +216,7 @@
                 <td id="sat-1630" class="sat-18">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 17h -->
                 <td>17h</td>
                 <td id="mon-17" class="mon-19">xxxx</td>
                 <td id="tue-17" class="tue-19">xxxx</td>
@@ -207,6 +226,7 @@
                 <td id="sat-17" class="sat-19">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 17h30 -->
                 <td>17h30</td>
                 <td id="mon-1730" class="mon-20">xxxx</td>
                 <td id="tue-1730" class="tue-20">xxxx</td>
@@ -216,6 +236,7 @@
                 <td id="sat-1730" class="sat-20">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 18h -->
                 <td>18h</td>
                 <td id="mon-18" class="mon-21">xxxx</td>
                 <td id="tue-18" class="tue-21">xxxx</td>
@@ -225,6 +246,7 @@
                 <td id="sat-18" class="sat-21">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 18h30 -->
                 <td>18h30</td>
                 <td id="mon-1830" class="mon-22">xxxx</td>
                 <td id="tue-1830" class="tue-22">xxxx</td>
@@ -234,6 +256,7 @@
                 <td id="sat-1830" class="sat-22">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 19h -->
                 <td>19h</td>
                 <td id="mon-19" class="mon-23">xxxx</td>
                 <td id="tue-19" class="tue-23">xxxx</td>
@@ -243,6 +266,7 @@
                 <td id="sat-19" class="sat-23">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 19h30 -->
                 <td>19h30</td>
                 <td id="mon-1930" class="mon-24">xxxx</td>
                 <td id="tue-1930" class="tue-24">xxxx</td>
@@ -252,6 +276,7 @@
                 <td id="sat-1930" class="sat-24">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 20 -->
                 <td>20h</td>
                 <td id="mon-20" class="mon-25">xxxx</td>
                 <td id="tue-20" class="tue-25">xxxx</td>
@@ -261,6 +286,7 @@
                 <td id="sat-20" class="sat-25">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 20h30 -->
                 <td>20h30</td>
                 <td id="mon-2030" class="mon-26">xxxx</td>
                 <td id="tue-2030" class="tue-26">xxxx</td>
@@ -270,6 +296,7 @@
                 <td id="sat-2030" class="sat-26">xxxx</td>
             </tr>
             <tr>
+                <!-- ligne 21h -->
                 <td>21h</td>
                 <td id="mon-21" class="mon-27">xxxx</td>
                 <td id="tue-21" class="tue-27">xxxx</td>

@@ -1,3 +1,7 @@
+/**
+ * 
+ * @param {String} json 
+ */
 let handleFile = (json) => {
     if (!json || typeof (json) != "object") throw new Error("No JSON data provided"); // dans le cas hypotétique où il y aurai pas d'objet en réponse
 
@@ -9,7 +13,7 @@ let handleFile = (json) => {
                 minute: new Date(json.monday[i].hour.start).getMinutes()
             }
             addElement(`.courses`, `[Lundi - ${startCourse.hour}:${startCourse.minute}] ${json.monday[i].name} - ${json.monday[i].room} - ${json.monday[i].teacher} <br>`)
-            
+            addElement("#editCourseSelector", `<option value="${json.monday[i].uuid}">Lundi - ${json.monday[i].name} - ${json.monday[i].room} - ${json.monday[i].teacher}</option>`)
         }
 
         for (let i = 0; i < json.tuesday.length; i++) {
@@ -19,7 +23,7 @@ let handleFile = (json) => {
                 minute: new Date(json.monday[i].hour.start).getMinutes()
             }
             addElement(`.courses`, `[Mardi - ${startCourse.hour}:${startCourse.minute}] ${json.tuesday[i].name} - ${json.tuesday[i].room} - ${json.tuesday[i].teacher} <br>`)
-            
+            addElement("#editCourseSelector", `<option value="${json.tuesday[i].uuid}">Mardi - ${json.tuesday[i].name} - ${json.tuesday[i].room} - ${json.tuesday[i].teacher}</option>`)
         }
 
         
@@ -30,7 +34,7 @@ let handleFile = (json) => {
                 minute: new Date(json.wednesday[i].hour.start).getMinutes()
             }
             addElement(`.courses`, `[Mercredi - ${startCourse.hour}:${startCourse.minute}] ${json.wednesday[i].name} - ${json.wednesday[i].room} - ${json.wednesday[i].teacher} <br>`)
-            
+            addElement("#editCourseSelector", `<option value="${json.wednesday[i].uuid}">Mercredi - ${json.wednesday[i].name} - ${json.wednesday[i].room} - ${json.wednesday[i].teacher}</option>`)
         }
 
         
@@ -41,7 +45,8 @@ let handleFile = (json) => {
                 minute: new Date(json.monday[i].hour.start).getMinutes()
             }
             addElement(`.courses`, `[Jeudi - ${startCourse.hour}:${startCourse.minute}] ${json.thursday[i].name} - ${json.thursday[i].room} - ${json.thursday[i].teacher} <br>`)
-            
+            addElement("#editCourseSelector", `<option value="${json.thursday[i].uuid}">Jeudi - ${json.thursday[i].name} - ${json.thursday[i].room} - ${json.thursday[i].teacher}</option>`)
+
         }
 
         
@@ -52,6 +57,7 @@ let handleFile = (json) => {
                 minute: new Date(json.friday[i].hour.start).getMinutes()
             }
             addElement(`.courses`, `[Vendredi - ${startCourse.hour}:${startCourse.minute}] ${json.friday[i].name} - ${json.friday[i].room} - ${json.friday[i].teacher} <br>`)
+            addElement("#editCourseSelector", `<option value="${json.friday[i].uuid}">Vendredi - ${json.friday[i].name} - ${json.friday[i].room} - ${json.friday[i].teacher}</option>`)
             
         }
 
@@ -63,7 +69,7 @@ let handleFile = (json) => {
                 minute: new Date(json.saturday[i].hour.start).getMinutes()
             }
             addElement(`.courses`, `[Samedi - ${startCourse.hour}:${startCourse.minute}] ${json.saturday[i].name} - ${json.saturday[i].room} - ${json.saturday[i].teacher} <br>`)
-            
+            addElement("#editCourseSelector", `<option value="${json.saturday[i].uuid}">Samedi - ${json.saturday[i].name} - ${json.saturday[i].room} - ${json.saturday[i].teacher}</option>`)
         }
 }
 

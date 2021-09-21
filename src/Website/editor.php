@@ -3,19 +3,34 @@ include "vars.php";
 // verification si l'utilisateur est valide
 $db = new PDO("mysql:host={$db_uri};dbname={$db_name}", $db_user, $db_password); // initialisation de la bdd dans le fichier PHP
 
+// on obtient tout les ID discord
+$getEveryDiscordIDRequest = "SELECT discord_id FROM admins WHERE 1";
 
-$sqlCmd = "SELECT * FROM admins WHERE discord_id='{$_SESSION['discordid']}'"; // commande sélectionnant l'enregistrement avec les identifiants entrés
+$getEveryDiscordIDPrepare = $db->prepare($getEveryDiscordIDRequest);
+$getEveryDiscordIDPrepare->execute();
 
-$prepare = $db->prepare($sqlCmd); // préparation et execution de la requête
+// on crée un tableau avec tout les ID
+$rows = array();
+$index = 0;
 
-$prepare->execute();
-$row = $prepare->fetch();
+// on remplit le tableau
+while ($row = $getEveryDiscordIDPrepare->fetch()) {
+    $rows[$index] = $row;
+    $index++;
+}
 
-// si l'id discord n'est pas trouvé on reviens vers l'index
-if ($prepare->rowCount() < 0) {
+$saltedDiscordID = $_SESSION['discordid'];
+$connected = false;
+
+for ($i = 0; $i < count($rows); $i++) {
+    if (hash("sha256", $rows[$i][0]) == $saltedDiscordID) {
+        $connected = true;
+    }
+}
+
+if (!$connected) {
     unset($_SESSION['discordid']);
-
-    header('Location: index.php');
+    header("Location: index.php");
     die();
 }
 
@@ -36,7 +51,7 @@ if ($prepare->rowCount() < 0) {
             <ul>
                 <li><a href="index.php">Voir EDT</a></li>
                 <li><a href="schedule.json">API</a></li>
-                <li><a href="login.php">Mettre à jour l'EDT</a></li>
+                <li><a href="disconnect.php">Deconnexion</a></li>
             </ul>
         </nav>
     </header>
@@ -45,7 +60,7 @@ if ($prepare->rowCount() < 0) {
         <?php echo "Connecté en tant que : " . $_SESSION['discordid'] . "<br /> <br /> <br /> <br />"; ?>
         <div class="addform">
             <h1>Ajouter un cours</h1>
-            <span>Jour du cours</span> <select name="day" id="">
+            <span>Jour du cours</span> <select name="day" id="addDaySelector">
                 <option value="monday">Lundi</option>
                 <option value="tuesday">Mardi</option>
                 <option value="wednesday">Mercredi</option>
@@ -53,29 +68,33 @@ if ($prepare->rowCount() < 0) {
                 <option value="friday">Vendredi</option>
                 <option value="saturday">Samedi</option>
             </select> <br>
-            <span>date du cours</span> <input type="time" name="date" id="date"> <br>
-            <span>Durée du cours (en demi-heures)</span> <input type="number" name="halfs" id=""> <br>
-            <span>Nom du cours</span> <input type="text" name="name" id=""> <br>
-            <span>Salle</span> <input type="text" name="room" id=""> <br>
-            <span>Prof</span> <input type="text" name="teacher" id=""> <br>
-            <input type="submit" value="Ajouter le cours">
+            <span>Heure du cours</span> <input type="time" id="addTime"> <br>
+            <span>Durée du cours (en demi-heures)</span> <input type="number" name="halfs" id="addCourseLength"> <br>
+            <span>Nom du cours</span> <input type="text" name="name" id="addCourseName"> <br>
+            <span>Salle</span> <input type="text" name="room" id="addCourseRoom"> <br>
+            <span>Prof</span> <input type="text" name="teacher" id="addCourseTeacher"> <br>
+            <button id="addcourse">Ajouter le cours</button>
         </div>
         <div class="editform">
         <h1>Modifier un cours</h1>
-            <span>Cours</span> <select name="day" id="">
+            <span>Cours</span> <select name="day" id="editCourseSelector">
             </select> <br>
-            <span>date du cours</span> <input type="time" name="date" id="date"> <br>
-            <span>Durée du cours (en demi-heures)</span> <input type="number" name="halfs" id=""> <br>
-            <span>Nom du cours</span> <input type="text" name="name" id=""> <br>
-            <span>Salle</span> <input type="text" name="room" id=""> <br>
-            <span>Prof</span> <input type="text" name="teacher" id=""> <br>
-            <button id="deletecourse">Modifier le cours</button>
+            <span>date du cours</span> <input type="time" name="date" id="editTime"> <br>
+            <span>Durée du cours (en demi-heures)</span> <input type="number" name="halfs" id="editCourseLength"> <br>
+            <span>Nom du cours</span> <input type="text" name="name" id="editCourseName"> <br>
+            <span>Salle</span> <input type="text" name="room" id="editCourseRoom"> <br>
+            <span>Prof</span> <input type="text" name="teacher" id="editCourseTeacher"> <br>
+            <button id="editcourse">Modifier le cours</button>
             <button id="deletecourse">Supprimer le cours</button>  
         </div>
         <div class="courses">
             <h1>Liste des cours actuels</h1>
         </div>
+
+        <script>let trapToSkids = "<?php echo $_SESSION['unsalted_discordid'] ?>";</script>
+        <script src="js/a.js"></script>
         <script src="js/editorParser.js"></script>
+        <script src="js/editor.js"></script>
     </main>
 </body>
 </html>

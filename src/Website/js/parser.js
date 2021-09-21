@@ -1,7 +1,14 @@
-// fonction de traitement de fichier
+/**
+ * Traite le fichier JSON
+ * @param {String} json prend en compte l'objet JSON retourné par l'appel ajax 
+ */
 let handleFile = (json) => {
     if (!json || typeof (json) != "object") throw new Error("No JSON data provided"); // dans le cas hypotétique où il y aurai pas d'objet en réponse
 
+    /*
+      Les boucles sont sensiblement les mêmes il y a seulement le jour qui change, seule la boucle du lundi sera donc documentée
+      dans la mesure où les autres font la même chose
+    */
     // gestion du lundi
     for (let i = 0; i < json.monday.length; i++) {
         // heures et minutes du début du cours
@@ -13,8 +20,6 @@ let handleFile = (json) => {
 
         let idstart; // ID du cours
 
-        // console.log(startCourse.minute)
-
         // si le cours est sur une heure "ronde" on met juste l'heure, si c'est sur une demi-heure on ajoute "30" derrière
         if (startCourse.minute == 0)
             idstart = `${startCourse.hour}`
@@ -22,9 +27,9 @@ let handleFile = (json) => {
             idstart = `${startCourse.hour}${startCourse.minute}`;
 
 
-        let tag = mapper(idstart);
+        let tag = mapper(idstart); // on utilise la fonction mapper pour savoir quelle classe modifier
 
-        for (let j = 0; j < json.monday[i].hour.length; j++)
+        for (let j = 0; j < json.monday[i].hour.length; j++) // pour chaque itération on update une cellule de table
         {
             //tag += j
             // console.log(`i = ${i}\nj = ${j}\ntag = ${tag}`)
@@ -150,8 +155,6 @@ let handleFile = (json) => {
 
         for (let j = 0; j < json.friday[i].hour.length; j++)
         {
-            //tag += j
-            // console.log(`i = ${i}\nj = ${j}\ntag = ${tag}`)
             updateHTML(`.fri-${tag + j}`, `${json.friday[i].name} - ${json.friday[i].room} - ${json.friday[i].teacher}`)
         }
 
@@ -189,6 +192,11 @@ let handleFile = (json) => {
     }
 }
 
+/**
+ * 
+ * @param {String} CSSSelector Selecteur AU FORMAT CSS !!! d'un element HTML
+ * @param {String} newVal Nouvel élément HTML qui remplacera l'ancien
+ */
 let updateHTML = (CSSSelector, newVal) => {
     if (!CSSSelector || !newVal) throw new Error("Can't update HTML data");
 
@@ -199,7 +207,7 @@ let updateHTML = (CSSSelector, newVal) => {
 /**
  * 
  * @param {string} id 
- * @returns map for the handlefile loops
+ * @returns retourne l'id correct (format HHMM a X) (H représente des heures, M des minutes et X un ID allant de 1 à 27)
  */
 let mapper = (id) => {
   switch (id) {
