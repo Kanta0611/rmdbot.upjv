@@ -1,5 +1,7 @@
+let schedule;
+
 /**
- * 
+ * Fonction de gestion du fichier JSON
  * @param {String} json 
  */
 let handleFile = (json) => {
@@ -73,6 +75,11 @@ let handleFile = (json) => {
         }
 }
 
+/**
+ * Fonction ajoutant un élément enfant a une autre balise
+ * @param CSSSelector
+ * @param el
+ */
 let addElement = (CSSSelector, el) => {
     let parent = document.querySelector(CSSSelector);
     parent.innerHTML += el;
@@ -88,6 +95,7 @@ let scheduleFile = new XMLHttpRequest()
 scheduleFile.onreadystatechange = () => {
     if (scheduleFile.readyState == 4 && scheduleFile.status == 200) { // on regarde le statut de la requete, si elle est valide ET si elle est complète (statut 4) on traite le fichier
         handleFile(JSON.parse(scheduleFile.responseText)); // on envoie le JSON dans une fonction à part
+        schedule =  JSON.parse(scheduleFile.responseText);
     }
 }
 

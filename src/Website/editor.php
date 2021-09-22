@@ -78,6 +78,7 @@ if (!$connected) {
         <div class="editform">
         <h1>Modifier un cours</h1>
             <span>Cours</span> <select name="day" id="editCourseSelector">
+                <option disabled selected>--Sélectionner un cours--</option>
             </select> <br>
             <span>date du cours</span> <input type="time" name="date" id="editTime"> <br>
             <span>Durée du cours (en demi-heures)</span> <input type="number" name="halfs" id="editCourseLength"> <br>

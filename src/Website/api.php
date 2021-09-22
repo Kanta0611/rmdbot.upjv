@@ -236,7 +236,7 @@ switch ($_GET["api"]) {
             $state =  [
                 "state" => "Not connected"
             ];
-            // header("Content-type: application/json");
+            header("Content-type: application/json");
             echo(json_encode($state));
             die();
         }
@@ -274,18 +274,29 @@ switch ($_GET["api"]) {
         break;
 
     case "editCourse":
+        if (!isUser()) {
+            $state =  [
+                "state" => "Not connected"
+            ];
+            header("Content-type: application/json");
+            echo(json_encode($state));
+            die();
+        }
+
         if (isset($_GET['guid']) && $_GET['guid'] && isset($_GET['name']) && $_GET['name'] != ""  && isset($_GET['room']) && $_GET['room'] != "" && isset($_GET['start']) && $_GET['start'] != "" && isset($_GET['length']) && $_GET['length'] != 0 && isset($_GET['teacher']) && $_GET['teacher'] != "") {
+            $state = [];
             editObject($_GET['guid'], $_GET['name'], $_GET['room'], $_GET['start'], $_GET['length'], $_GET['teacher']);
             $state =  [
                 "state" => "OK"
             ];
+
             header("Content-type: application/json");
             echo(json_encode($state));
         } else {
             $state =  [
                 "state" => "There are missing arguments"
             ];
-            header("Content-type: application/json");
+            // header("Content-type: application/json");
             echo(json_encode($state));      
         }
         break;
