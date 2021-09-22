@@ -296,7 +296,7 @@ switch ($_GET["api"]) {
             $state =  [
                 "state" => "There are missing arguments"
             ];
-            // header("Content-type: application/json");
+            header("Content-type: application/json");
             echo(json_encode($state));      
         }
         break;
