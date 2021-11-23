@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SimpleScheduleViewer</title>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
     <header>
         <nav>
+            <h2>Menu</h2>
             <ul>
-                <li><a href="index.php">Voir EDT</a></li>
-                <li><a href="schedule.json">API</a></li>
-                <li><a href="login.php">Mettre à jour l'EDT</a></li>
+                <li><a class="navbar-link" href="index.php">Voir EDT</a></li>
+                <li><a class="navbar-link" href="schedule.json">API</a></li>
+                <li><a class="navbar-link" href="login.php">Maj EDT</a></li>
             </ul>
         </nav>
         <!-- header, titre, nav {viewer, api, creator (avec connexion)} -->
@@ -27,13 +29,13 @@
         <table>
             <tr>
                 <!-- colonnes -->
-                <td>X</td>
-                <td>Lundi</td>
-                <td>Mardi</td>
-                <td>Mercredi</td>
-                <td>Jeudi</td>
-                <td>Vendredi</td>
-                <td>Samedi</td>
+                <th>X</th>
+                <th>Lundi</th>
+                <th>Mardi</th>
+                <th>Mercredi</th>
+                <th>Jeudi</th>
+                <th>Vendredi</th>
+                <th>Samedi</th>
             </tr>
             <tr>
                 <!-- ligne 8h -->
